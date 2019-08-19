@@ -6,6 +6,7 @@
  * Time: 15:59
  */
 
+namespace Model;
 /**
  * @Entity
  * @Table(name="temas")

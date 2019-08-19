@@ -29,8 +29,15 @@ class NoticiaImagem{
 
     /**
      * @ManyToOne(targetEntity="Imagem")
+     * @JoinColumn(nullable=false)
      */
-    protected $imagem;
+    private $imagem;
+
+    /**
+     * @ManyToOne(targetEntity="Noticia")
+     * @JoinColumn(nullable=false)
+     */
+    private $noticia;
 
     public function getId()
     {
@@ -68,5 +75,19 @@ class NoticiaImagem{
         $this->imagem = $imagem;
     }
 
+    /**
+     * @return mixed
+     */
+    public function getNoticia()
+    {
+        return $this->noticia;
+    }
 
+    /**
+     * @param mixed $noticia
+     */
+    public function setNoticia($noticia)
+    {
+        $this->noticia = $noticia;
+    }
 }

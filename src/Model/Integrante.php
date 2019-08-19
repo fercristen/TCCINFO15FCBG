@@ -6,6 +6,7 @@
  * Time: 16:13
  */
 
+namespace Model;
 /**
  * @Entity
  * @Table(name="integrantes")

@@ -1,10 +1,15 @@
 <?php
 
+namespace Model;
 /**
  * @Entity
  * @Table(name="imagens")
  */
 class Imagem{
+
+     const TIPO_BANNER = 1;
+     const TIPO_NOTICIA = 2;
+
     /**
      * @Id
      * @Column(name="img_id", type="integer")

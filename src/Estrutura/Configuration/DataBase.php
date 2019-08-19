@@ -4,11 +4,11 @@ namespace Estrutura\Configuration;
 
 class DataBase
 {
-    const URL_SITE = "https://gremioifc.com";
+    const URL_SITE = "http://devgremioifc.com";
 
     public static function getConnectionConfiguration(){
         $conn = array(
-            'dbname' => 'portal_gremio',
+            'dbname' => 'portal_gremio_dev',
             'user' => 'root',
             'host' => 'localhost',
             'driver' => 'pdo_mysql',

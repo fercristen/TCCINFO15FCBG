@@ -6,6 +6,7 @@
  * Time: 16:10
  */
 
+namespace Model;
 /**
  * @Entity
  * @Table(name="movimentacoes")
