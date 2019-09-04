@@ -8,13 +8,13 @@
 namespace View\Admin;
 
 
-use Estrutura\View\BaseView;
+use Estrutura\View\BaseFormView;
 
-class AddNewNotice extends BaseView
+class AddNewNotice extends BaseFormView
 {
     public function createHtml() {
-        ?>
-        <form method="POST">
+        return '
+        <form action="/addNoticia" method="POST">
             <div class="form-group">
                 <label for="exampleFormControlInput1">Titulo</label>
                 <input type="text" class="form-control" name="titulo" required>
@@ -28,9 +28,7 @@ class AddNewNotice extends BaseView
                 <textarea class="form-control" name="corpo" rows="5" required></textarea>
             </div>
             <button class="btn btn-lg btn-primary btn-block" type ="submit" name="login">Gravar</button>
-            <a class="btn btn-lg btn-primary btn-block" href="/logout">Logout</a>
-        </form>
-        <?php
+        </form>';
     }
 }
 ?>

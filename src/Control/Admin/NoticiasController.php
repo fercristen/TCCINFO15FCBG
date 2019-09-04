@@ -47,6 +47,20 @@ class NoticiasController extends BaseController
         return $dados;
     }
 
+    public function delete(){
+        try{
+           $noticia = $this->getEntityManager()->getRepository(Noticia::class)->find($this->getResquestParam('id'));
+           if($noticia) {
+               $this->getEntityManager()->remove($noticia);
+               $this->getEntityManager()->flush();
+               echo json_encode(['message' => 'Excluido entidade #'.$this->getResquestParam('id')]) ;
+               return;
+           }
+        }catch (\Exception $exception){
+            echo json_encode(['message' => 'Erro ao excluir entidade, tente novamente']);
+        }
+    }
+
     public function add(){
         if($this->isPost()){
             try{
@@ -57,13 +71,14 @@ class NoticiasController extends BaseController
                 $noticia->setData(new \DateTime());
                 $this->getEntityManager()->persist($noticia);
                 $this->getEntityManager()->flush();
-                $this->redirectPage("/index");
+                $this->redirectPage("/admin");
             }catch (\Exception $exception){
-                $this->redirectPage("/addNoticia");
+                $this->redirectPage("/admin");
                  var_dump($exception);
             }
         }else{
-            return new AddNewNotice();
+            $view = new AddNewNotice();
+            $view->getFormatoJSON();
         }
     }
 

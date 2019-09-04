@@ -1,5 +1,4 @@
 function selectMenu(router) {
-    console.log(router);
     $.ajax({
         type: 'GET',
         url: window.location.href,
@@ -25,13 +24,17 @@ function selectMenu(router) {
             var tbody = document.createElement('tbody');
             $.each(data.dados, function( index, value ) {
                 var trBody = document.createElement('tr');
+                var id = 0;
                     $.each(value, function( indexField, valueField ) {
+                        if(indexField == 'id'){
+                            id = valueField;
+                        }
                         var td = document.createElement('td');
                         td.innerText = valueField;
                         trBody.appendChild(td);
                     });
                 var tdActions = document.createElement('td');
-                tdActions.innerHTML = criaAcoesTable(data.acoes);
+                tdActions.innerHTML = criaAcoesTable(data.acoes, id, router);
                 trBody.appendChild(tdActions);
                 tbody.append(trBody);
             });
@@ -62,20 +65,37 @@ function selectMenu(router) {
             }});
         },
         error: function (data) {
-            $("#append").empty();
             alert("Não localizada consulta selecionada.");
         }
     });
 }
 
-function criaAcoesTable(acoes) {
+function criaAcoesTable(acoes, id, routerConsulta) {
     var buttons = '';
     $.each(acoes, function( title, router ) {
-       buttons += '&nbsp;<button onclick="selectForm(\''+router+'\')">'+title+'</button> &nbsp;';
+       buttons += '&nbsp;<button idModel="'+id+'" onclick="selectForm(\''+router+'\', \''+routerConsulta+'\', this)">'+title+'</button> &nbsp;';
     });
     return buttons
 }
 
-function selectForm(router) {
-    alert(router);
+function selectForm(router, routerConsulta, button) {
+    $.ajax({
+        type: 'GET',
+        url: window.location.href,
+        data: {'router':router, 'id': $(button).attr('idModel')},
+        dataType: 'json',
+        contentType: 'application/json',
+        success: function (data) {
+            if(data.html){
+                $("#append").empty();
+                $("#append").append(data.html);
+            }else if(data.message){
+                alert(data.message);
+                selectMenu(routerConsulta);
+            }
+        },
+        error: function (data) {
+            alert('Erro ao encontrar tela solicitada');
+        }
+    });
 }
