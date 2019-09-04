@@ -33,6 +33,11 @@ class RouterDefine
                 'control' => 'Control::Site::FrontEndController.ler',
                 'privilegio' => self::ALL_USER,
             ],
+            //----------Base Admin
+            '/admin' => [
+                'control' => 'Control::Admin::AdminController.run',
+                'privilegio' => self::ADMIN_USER,
+            ],
             //----------Admin
             '/login' => [
                 'control' => 'Control::Admin::BackEndController.login',
@@ -48,6 +53,18 @@ class RouterDefine
             ],
             '/addNoticia' => [
                 'control' => 'Control::Admin::NoticiasController.add',
+                'privilegio' => self::ADMIN_USER,
+            ],
+            '/temas' => [
+                'control' => 'Control::Admin::TemaController.index',
+                'privilegio' => self::ADMIN_USER,
+            ],
+            '/addTema' => [
+                'control' => 'Control::Admin::TemaController.add',
+                'privilegio' => self::ADMIN_USER,
+            ],
+            '/integrantes' => [
+                'control' => 'Control::Admin::IntegrantesController.index',
                 'privilegio' => self::ADMIN_USER,
             ],
         );

@@ -9,6 +9,7 @@ namespace Control\Admin;
 
 
 use Estrutura\Controller\BaseController;
+use Estrutura\Model\Resposta;
 use Model\Noticia;
 use View\Admin\AddNewNotice;
 
@@ -16,7 +17,34 @@ class NoticiasController extends BaseController
 {
 
     public function index(){
+        $fields = [
+            'id' => '#',
+            'titulo' => 'Titulo',
+            'data' => 'Data',
+        ];
+        $acoes = [
+            'Adicionar' => 'addNoticia',
+            'Editar' => 'editNoticia',
+            'Visualizar' => 'viewNoticia',
+            'Excluir' => 'deleteNoticia',
+        ];
+        $dados = $this->modeloParaGrid();
+        $resposta = new Resposta($fields, $dados, $acoes);
+        $resposta->getFormatoJSON();
+    }
 
+    public function modeloParaGrid(){
+        $dados = [];
+        /** @var $noticias Noticia[]*/
+        $noticias = $this->getEntityManager()->getRepository(Noticia::class)->findAll();
+        foreach ($noticias as $noticia){
+            $dados[] = [
+                'id' => $noticia->getId(),
+                'titulo' =>  $noticia->getTitulo(),
+                'data' =>  $noticia->getData()->format('d/m/Y'),
+            ];
+        }
+        return $dados;
     }
 
     public function add(){
@@ -29,9 +57,10 @@ class NoticiasController extends BaseController
                 $noticia->setData(new \DateTime());
                 $this->getEntityManager()->persist($noticia);
                 $this->getEntityManager()->flush();
-                $this->redirectPage("/noticias");
+                $this->redirectPage("/index");
             }catch (\Exception $exception){
                 $this->redirectPage("/addNoticia");
+                 var_dump($exception);
             }
         }else{
             return new AddNewNotice();

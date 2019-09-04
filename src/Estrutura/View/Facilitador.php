@@ -10,6 +10,76 @@ namespace Estrutura\View;
 
 class Facilitador
 {
+    public static function createTemplateAdmin(){
+       echo '<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+  <title>Admin Site</title>
+  <link href="utils/css/bootstrap.min.css" rel="stylesheet">
+  <link href="utils/css/simple-sidebar.css" rel="stylesheet">
+  <link href="utils/css/datable.css" rel="stylesheet">
+  <script src="utils/js/jquery.min.js"></script>
+  <script src="utils/js/admin-controller.js"></script>
+  <script src="utils/js/datatable.js"></script>
+  <script src="utils/js/datatablebootstrap.js"></script>
+
+</head>
+
+<body>
+
+  <div class="d-flex" id="wrapper">
+
+    <!-- Sidebar -->
+    <div class="bg-light border-right" id="sidebar-wrapper">
+      <div class="sidebar-heading">Gremio Noticias </div>
+      <div class="list-group list-group-flush">
+        <button onclick="selectMenu(\'noticias\')" class="list-group-item list-group-item-action bg-light">Noticias</button>
+        <button onclick="selectMenu(\'temas\')" class="list-group-item list-group-item-action bg-light">Temas</button>
+        <button onclick="selectMenu(\'integrantes\')"  class="list-group-item list-group-item-action bg-light">Integrantes</button>
+        <button onclick="selectMenu(\'gremio\')"  class="list-group-item list-group-item-action bg-light">Gremio</button>
+        <button onclick="selectMenu(\'transparencia\')"  class="list-group-item list-group-item-action bg-light">Transparencia</button>
+      </div>
+    </div>
+    <!-- /#sidebar-wrapper -->
+
+    <!-- Page Content -->
+    <div id="page-content-wrapper">
+
+      <nav class="navbar navbar-expand-lg navbar-light bg-light border-bottom">
+        <button class="btn btn-primary" id="menu-toggle">X</button>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
+            <li class="nav-item active">
+              <a class="nav-link" href="/logout">Sair <span class="sr-only">(current)</span></a>
+            </li>
+          </ul>
+        </div>
+      </nav>
+      <div id="append" class="container-fluid">
+      <!-- Lugar onde coloca o conteudo da tela -->
+      </div>
+    </div>
+  </div>
+  <script>
+    $("#menu-toggle").click(function(e) {
+      e.preventDefault();
+      $("#wrapper").toggleClass("toggled");
+    });
+  </script>
+</body>
+</html>
+';
+    }
+
     public static function createMenuSite(){
         ?>
         <style>

@@ -21,11 +21,39 @@ class FrontEndLerNoticia extends BaseView
         parent::__construct();
     }
 
+
+
     public function createHtml()
     {
+
         Facilitador::createMenuSite();
         ?>
-        <?php
+        </br>
+        </br>
+        </br>
+        <div class="entity_wrapper">
+            <div class="entity_title">
+                <h2> <?php
+                    echo $this->noticia->getTitulo();
+                    ?></h2>
+
+
+            <div class="entity_thumb">
+                <img class="img-responsive" src="" alt="imagem">
+            </div>
+
+               <p>
+                    <?php   echo $this->noticia->getCorpo();?>
+                </p>
+            </div>
+
+        </div>
+      <?php
+
+
+
+
+
     }
 
     /**

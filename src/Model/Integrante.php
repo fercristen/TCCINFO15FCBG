@@ -41,7 +41,6 @@ class Integrante{
         $this->id = $id;
         $this->nome = $nome;
         $this->cargo = $cargo;
-        $this->adm = $adm;
 }
 public function getId()
 {
@@ -67,14 +66,7 @@ public function setCargo($cargo)
 {
     $this->cargo = $cargo;
 }
-public function getAdm()
-{
-    return $this->adm;
-}
-public function setAdm($adm)
-{
-    $this->adm = $adm;
-}
+
 
 
 }

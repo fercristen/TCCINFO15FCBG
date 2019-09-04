@@ -27,6 +27,10 @@ class Tema{
      */
     protected $descricao;
 
+    function getId()
+    {
+        return $this->id;
+    }
 
      function getNome()
     {

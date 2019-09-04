@@ -28,6 +28,7 @@ class AddNewNotice extends BaseView
                 <textarea class="form-control" name="corpo" rows="5" required></textarea>
             </div>
             <button class="btn btn-lg btn-primary btn-block" type ="submit" name="login">Gravar</button>
+            <a class="btn btn-lg btn-primary btn-block" href="/logout">Logout</a>
         </form>
         <?php
     }

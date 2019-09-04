@@ -19,15 +19,14 @@ class BackEndController extends BaseController
             $usuario = $repositorio->validaLogin($this->getDataParam("email"), $this->getDataParam("password"));
             if($usuario){
                 $this->setUserSession($usuario);
-                $this->redirectPage("/addNoticia");
+                $this->redirectPage("/admin");
             }else{
                 $this->redirectPage("/login");
             }
         }else{
             if($this->getUserSession()){
-                $this->redirectPage("/addNoticia");
+                $this->redirectPage("/admin");
             }
-
             return new LoginFormView();
         }
     }
