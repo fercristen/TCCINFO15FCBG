@@ -8,13 +8,13 @@
 namespace View\Admin;
 
 
-use Estrutura\View\BaseView;
+use Estrutura\View\BaseFormView;
 
-class AddNewTema extends BaseView
+class TemaForm extends BaseFormView
 {
     public function createHtml() {
-        ?>
-        <form method="POST">
+        return '
+        <form action="'.$this->getRouter().'" method="POST">
             <div class="form-group">
                 <label for="exampleFormControlInput1">Nome</label>
                 <input type="text" class="form-control" name="nome" required>
@@ -24,9 +24,8 @@ class AddNewTema extends BaseView
                 <textarea class="form-control" name="descricao" rows="2" required></textarea>
             </div>
             <button class="btn btn-lg btn-primary btn-block" type ="submit" name="login">Gravar</button>
-            <a class="btn btn-lg btn-primary btn-block" href="/logout">Logout</a>
         </form>
-        <?php
+        ';
     }
 }
 ?>

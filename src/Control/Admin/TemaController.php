@@ -11,7 +11,7 @@ namespace Control\Admin;
 use Estrutura\Controller\BaseController;
 use Estrutura\Model\Resposta;
 use Model\Tema;
-use View\Admin\AddNewTema;
+use View\Admin\TemaForm;
 
 class TemaController extends BaseController
 {
@@ -23,14 +23,16 @@ class TemaController extends BaseController
             'nome' => 'Nome',
             'descricao' => 'Descricao',
         ];
-        $acoes = [
-            'Adicionar' => 'addTema',
+        $acoesLinha = [
             'Editar' => 'editTema',
             'Visualizar' => 'viewTema',
             'Excluir' => 'deleteTema',
         ];
+        $acoes = [
+            'Adicionar' => 'addTema',
+        ];
         $dados = $this->modeloParaGrid();
-        $resposta = new Resposta($fields, $dados, $acoes);
+        $resposta = new Resposta($fields, $dados, $acoesLinha, $acoes);
         $resposta->getFormatoJSON();
     }
 
@@ -57,13 +59,13 @@ class TemaController extends BaseController
                 $tema->setDescricao($this->getDataParam('descricao'));
                 $this->getEntityManager()->persist($tema);
                 $this->getEntityManager()->flush();
-                $this->redirectPage("/index");
+                $this->redirectPage("/admin");
             }catch (\Exception $exception){
 
-                var_dump($tema);
             }
         }else{
-            return new AddNewTema();
+            $view = new TemaForm('/addTema');
+            $view->getFormatoJSON();
         }
     }
 }

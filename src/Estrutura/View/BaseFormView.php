@@ -17,15 +17,21 @@ use Estrutura\Controller\BaseController;
  */
 abstract class BaseFormView extends BaseController
 {
+    private $router;
+
     private $html;
 
     private $dados;
 
+    private $isView;
+
     abstract public function createHtml();
 
-    public function __construct()
+    public function __construct($router, $isView = false)
     {
         parent::__construct();
+        $this->setRouter($router);
+        $this->setIsView($isView);
         $this->setHtml($this->createHtml());
     }
 
@@ -33,7 +39,24 @@ abstract class BaseFormView extends BaseController
         echo json_encode([
             'html' => $this->getHtml(),
             'dados' => $this->getDados(),
+            'isView' => $this->getisView(),
         ]);
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getRouter()
+    {
+        return $this->router;
+    }
+
+    /**
+     * @param mixed $router
+     */
+    public function setRouter($router)
+    {
+        $this->router = $router;
     }
 
     /**
@@ -66,6 +89,22 @@ abstract class BaseFormView extends BaseController
     public function setDados($dados)
     {
         $this->dados = $dados;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getisView()
+    {
+        return $this->isView;
+    }
+
+    /**
+     * @param mixed $isView
+     */
+    public function setIsView($isView)
+    {
+        $this->isView = $isView;
     }
 
 

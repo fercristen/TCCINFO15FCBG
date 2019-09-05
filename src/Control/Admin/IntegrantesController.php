@@ -22,14 +22,16 @@ class IntegrantesController extends BaseController
             'nome' => 'Nome',
             'cargo' => 'Cargo',
         ];
-        $acoes = [
-            'Adicionar' => 'addIntegrante',
+        $acoesLinha = [
             'Editar' => 'editIntegrante',
             'Visualizar' => 'viewIntegrante',
             'Excluir' => 'deleteIntegrante',
         ];
+        $acoes = [
+            'Adicionar' => 'addIntegrante',
+        ];
         $dados = $this->modeloParaGrid();
-        $resposta = new Resposta($fields, $dados, $acoes);
+        $resposta = new Resposta($fields, $dados, $acoesLinha, $acoes);
         $resposta->getFormatoJSON();
     }
 

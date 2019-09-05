@@ -9,7 +9,7 @@ namespace View\Admin;
 
 use Estrutura\View\BaseView;
 
-class AddNewIntegrante extends BaseView
+class IntegranteForm extends BaseView
 {
 
     function createHtml()

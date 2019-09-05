@@ -14,17 +14,25 @@ class Resposta
 
     private $dados;
 
+    private $acoesLinha;
+
     private $acoes;
 
-    public function __construct($fields, $dados, $acoes)
+    public function __construct($fields, $dados, $acoesLinha, $acoes)
     {
         $this->fields = $fields;
         $this->dados = $dados;
+        $this->acoesLinha = $acoesLinha;
         $this->acoes = $acoes;
     }
 
     public function getFormatoJSON(){
-        echo json_encode(['fields' => $this->getFields(), 'dados' => $this->getDados(), 'acoes' => $this->getAcoes()]);
+        echo json_encode([
+            'fields' => $this->getFields(),
+            'dados' => $this->getDados(),
+            'acoesLinha' => $this->getAcoesLinha(),
+            'acoes' => $this->getAcoes()
+        ]);
     }
 
     /**
@@ -76,4 +84,19 @@ class Resposta
         $this->acoes = $acoes;
     }
 
+    /**
+     * @return mixed
+     */
+    public function getAcoesLinha()
+    {
+        return $this->acoesLinha;
+    }
+
+    /**
+     * @param mixed $acoesLinha
+     */
+    public function setAcoesLinha($acoesLinha)
+    {
+        $this->acoesLinha = $acoesLinha;
+    }
 }

@@ -55,6 +55,14 @@ class RouterDefine
                 'control' => 'Control::Admin::NoticiasController.add',
                 'privilegio' => self::ADMIN_USER,
             ],
+            '/editNoticia' => [
+                'control' => 'Control::Admin::NoticiasController.edit',
+                'privilegio' => self::ADMIN_USER,
+            ],
+            '/viewNoticia' => [
+                'control' => 'Control::Admin::NoticiasController.view',
+                'privilegio' => self::ADMIN_USER,
+            ],
             '/deleteNoticia' => [
                 'control' => 'Control::Admin::NoticiasController.delete',
                 'privilegio' => self::ADMIN_USER,

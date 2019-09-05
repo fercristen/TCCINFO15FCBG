@@ -8,6 +8,10 @@ function selectMenu(router) {
         success: function(data) {
             $("#append").empty();
             $("#append").css('padding' , '30px');
+            var buttonsTopo = criaAcoesTable(data.acoes, null, router);
+            $("#append").append(buttonsTopo);
+            $("#append").append('<br>');
+            $("#append").append('<br>');
             var table = document.createElement('table');
             var thead = document.createElement('thead');
             var tr = document.createElement('tr');
@@ -34,7 +38,7 @@ function selectMenu(router) {
                         trBody.appendChild(td);
                     });
                 var tdActions = document.createElement('td');
-                tdActions.innerHTML = criaAcoesTable(data.acoes, id, router);
+                tdActions.innerHTML = criaAcoesTable(data.acoesLinha, id, router);
                 trBody.appendChild(tdActions);
                 tbody.append(trBody);
             });
@@ -93,8 +97,18 @@ function selectForm(router, routerConsulta, button) {
                 alert(data.message);
                 selectMenu(routerConsulta);
             }
+            if(data.dados){
+                $.each(data.dados, function( index, value ) {
+                    console.log(value, index);
+                    $("[name="+index+"]").val(value);
+                });
+            }
+            if(data.isView){
+                $(".form-control").prop( "disabled", true );
+            }
         },
         error: function (data) {
+            console.log(data);
             alert('Erro ao encontrar tela solicitada');
         }
     });

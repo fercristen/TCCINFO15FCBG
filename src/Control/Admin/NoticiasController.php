@@ -11,7 +11,7 @@ namespace Control\Admin;
 use Estrutura\Controller\BaseController;
 use Estrutura\Model\Resposta;
 use Model\Noticia;
-use View\Admin\AddNewNotice;
+use View\Admin\NoticiaForm;
 
 class NoticiasController extends BaseController
 {
@@ -22,14 +22,16 @@ class NoticiasController extends BaseController
             'titulo' => 'Titulo',
             'data' => 'Data',
         ];
-        $acoes = [
-            'Adicionar' => 'addNoticia',
+        $acoesLinhas = [
             'Editar' => 'editNoticia',
             'Visualizar' => 'viewNoticia',
             'Excluir' => 'deleteNoticia',
         ];
+        $acoes = [
+            'Adicionar' => 'addNoticia',
+        ];
         $dados = $this->modeloParaGrid();
-        $resposta = new Resposta($fields, $dados, $acoes);
+        $resposta = new Resposta($fields, $dados, $acoesLinhas, $acoes);
         $resposta->getFormatoJSON();
     }
 
@@ -74,12 +76,51 @@ class NoticiasController extends BaseController
                 $this->redirectPage("/admin");
             }catch (\Exception $exception){
                 $this->redirectPage("/admin");
-                 var_dump($exception);
             }
         }else{
-            $view = new AddNewNotice();
+            $view = new NoticiaForm('/addNoticia');
             $view->getFormatoJSON();
         }
+    }
+
+    public function edit(){
+        if($this->isPost()){
+            try{
+                $noticia = $this->getEntityManager()->getRepository(Noticia::class)->find($this->getDataParam('id'));
+                $noticia->setTitulo($this->getDataParam('titulo'));
+                $noticia->setResumo($this->getDataParam('resumo'));
+                $noticia->setCorpo($this->getDataParam('corpo'));
+                //$noticia->setData(new \DateTime());
+                $this->getEntityManager()->persist($noticia);
+                $this->getEntityManager()->flush();
+                $this->redirectPage("/admin");
+            }catch (\Exception $exception){
+                $this->redirectPage("/admin");
+            }
+        }else{
+            $noticia = $this->getEntityManager()->getRepository(Noticia::class)->find($this->getResquestParam('id'));
+            $view = new NoticiaForm('/editNoticia');
+            $view->setDados($this->modeloParaForm($noticia));
+            $view->getFormatoJSON();
+        }
+    }
+
+    public function view(){
+        $noticia = $this->getEntityManager()->getRepository(Noticia::class)->find($this->getResquestParam('id'));
+        $view = new NoticiaForm('/viewNoticia', true);
+        $view->setDados($this->modeloParaForm($noticia));
+        $view->getFormatoJSON();
+    }
+
+    public function modeloParaForm(Noticia $noticia){
+        $dado = [
+            'id' => $noticia->getId(),
+            'titulo' =>  $noticia->getTitulo(),
+            'data' =>  $noticia->getData()->format('d/m/Y'),
+            'resumo' =>  $noticia->getResumo(),
+            'corpo' =>  $noticia->getCorpo(),
+        ];
+        return $dado;
     }
 
 }

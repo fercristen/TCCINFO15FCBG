@@ -37,7 +37,7 @@ class Facilitador
 
     <!-- Sidebar -->
     <div class="bg-light border-right" id="sidebar-wrapper">
-      <div class="sidebar-heading">Gremio Noticias </div>
+      <div class="sidebar-heading">Gremio ADMIN </div>
       <div class="list-group list-group-flush">
         <button onclick="selectMenu(\'noticias\')" class="list-group-item list-group-item-action bg-light">Noticias</button>
         <button onclick="selectMenu(\'temas\')" class="list-group-item list-group-item-action bg-light">Temas</button>
