@@ -32,13 +32,10 @@ class FrontEndLerNoticia extends BaseView
         </br>
         </br>
         <div class="container">
-            <div id="titulo">
+            <div style="text-align: center" id="titulo">
                 <h1><?php
                     echo $this->noticia->getTitulo();
                     ?></h1>
-            </div>
-            <div class="imagemnoticia">
-                <img src="http://noticias.ibirama.ifc.edu.br/wp-content/uploads/sites/2/2018/08/posse_11.jpg" alt="IMAGEMGREMIO<?php ?>" height="70%" width="75%">
             </div>
             <div id="texton">
                 <p><?php   echo $this->noticia->getCorpo();?></p>

@@ -75,7 +75,8 @@ class NoticiasController extends BaseController
                 $this->getEntityManager()->flush();
                 $this->redirectPage("/admin");
             }catch (\Exception $exception){
-                $this->redirectPage("/admin");
+                echo json_encode(['message' => $exception->getMessage()]);
+                //$this->redirectPage("/admin");
             }
         }else{
             $view = new NoticiaForm('/addNoticia');

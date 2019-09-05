@@ -46,6 +46,9 @@
                 <br />
                 <br />
                 <br />
+                <h1 style="text-align: center">Funcionalidade em desenvolvimento.</h1>
+                <br />
+                <br />
                 <div class="classe">
                     <div class="session">
                         <h4>Quem somos?</h4>

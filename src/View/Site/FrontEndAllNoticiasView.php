@@ -29,12 +29,11 @@ class FrontEndAllNoticiasView extends BaseView
                 <div class="row">
                     <?php foreach ($noticias as $noticia){ ?>
 
-                        <div class="col-sm-4">
+                        <div class="col-sm-6">
                             <h2><?= $noticia->getTitulo();  ?></h2>
                             <div class="card shadow-sm">
                                 <div class="bd-placeholder-img card-img-top" width="100%" height="225px">
-                                    <img width="100%" height="225px"
-                                         src="http://noticias.ibirama.ifc.edu.br/wp-content/uploads/sites/2/2018/08/posse_11.jpg">
+                                    <img width="100%" height="225px"src="/utils/img/noticias/<?= $noticia->getId();?>.jpg">
                                 </div>
 
                                 <div class="card-body">

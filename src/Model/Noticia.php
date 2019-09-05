@@ -27,7 +27,7 @@ class Noticia{
      */
     protected $resumo;
     /**
-     *@Column(name="not_corpo", type="string")
+     *@Column(name="not_corpo", type="text")
      */
     protected $corpo;
     /**

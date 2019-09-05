@@ -99,7 +99,6 @@ function selectForm(router, routerConsulta, button) {
             }
             if(data.dados){
                 $.each(data.dados, function( index, value ) {
-                    console.log(value, index);
                     $("[name="+index+"]").val(value);
                 });
             }

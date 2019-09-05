@@ -15,6 +15,7 @@ class LoginFormView extends BaseView
     public function createHtml()
     {
         ?>
+
         <form style="padding: 20%" class="form-signin" role = "form" action="" method="post">
             <input type="email" class="form-control" name="email" placeholder="Email" required autofocus></br>
             <input type="password" class="form-control" name="password" placeholder="Senha" required>
