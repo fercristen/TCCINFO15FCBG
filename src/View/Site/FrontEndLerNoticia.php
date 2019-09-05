@@ -31,28 +31,21 @@ class FrontEndLerNoticia extends BaseView
         </br>
         </br>
         </br>
-        <div class="entity_wrapper">
-            <div class="entity_title">
-                <h2> <?php
+        <div class="container">
+            <div id="titulo">
+                <h1><?php
                     echo $this->noticia->getTitulo();
-                    ?></h2>
-
-
-            <div class="entity_thumb">
-                <img class="img-responsive" src="" alt="imagem">
+                    ?></h1>
+            </div>
+            <div class="imagemnoticia">
+                <img src="http://noticias.ibirama.ifc.edu.br/wp-content/uploads/sites/2/2018/08/posse_11.jpg" alt="IMAGEMGREMIO<?php ?>" height="70%" width="75%">
+            </div>
+            <div id="texton">
+                <p><?php   echo $this->noticia->getCorpo();?></p>
+                    <br><br>
             </div>
 
-               <p>
-                    <?php   echo $this->noticia->getCorpo();?>
-                </p>
-            </div>
-
-        </div>
       <?php
-
-
-
-
 
     }
 

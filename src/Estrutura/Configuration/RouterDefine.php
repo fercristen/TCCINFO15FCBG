@@ -33,6 +33,10 @@ class RouterDefine
                 'control' => 'Control::Site::FrontEndController.ler',
                 'privilegio' => self::ALL_USER,
             ],
+            '/transparencia' => [
+                'control' => 'Control::Site::FrontEndController.transparencia',
+                'privilegio' => self::ALL_USER,
+            ],
             //----------Base Admin
             '/admin' => [
                 'control' => 'Control::Admin::AdminController.run',

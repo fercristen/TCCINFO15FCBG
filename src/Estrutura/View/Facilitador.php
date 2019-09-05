@@ -37,13 +37,13 @@ class Facilitador
 
     <!-- Sidebar -->
     <div class="bg-light border-right" id="sidebar-wrapper">
-      <div class="sidebar-heading">Gremio ADMIN </div>
+      <div class="sidebar-heading">Grêmio ADMIN </div>
       <div class="list-group list-group-flush">
         <button onclick="selectMenu(\'noticias\')" class="list-group-item list-group-item-action bg-light">Noticias</button>
         <button onclick="selectMenu(\'temas\')" class="list-group-item list-group-item-action bg-light">Temas</button>
         <button onclick="selectMenu(\'integrantes\')"  class="list-group-item list-group-item-action bg-light">Integrantes</button>
-        <button onclick="selectMenu(\'gremio\')"  class="list-group-item list-group-item-action bg-light">Gremio</button>
-        <button onclick="selectMenu(\'transparencia\')"  class="list-group-item list-group-item-action bg-light">Transparencia</button>
+        <button onclick="selectMenu(\'grêmio\')"  class="list-group-item list-group-item-action bg-light">Grêmio</button>
+        <button onclick="selectMenu(\'transparencia\')"  class="list-group-item list-group-item-action bg-light">Transparência</button>
       </div>
     </div>
     <!-- /#sidebar-wrapper -->
@@ -96,7 +96,7 @@ class Facilitador
         <header>
             <nav class="navbar navbar-expand-md navbar-dark fixed-top color-base">
                 <a class="navbar-brand" href="#">
-                    <img style="border-radius: 100px!important; width: 40px;" src="https://instagram.fbnu1-1.fna.fbcdn.net/vp/58d4940bd52d25917da8160e0c5b1494/5D6B3F78/t51.2885-19/s150x150/42002380_312572049523427_3211460447240716288_n.jpg?_nc_ht=instagram.fbnu1-1.fna.fbcdn.net"> Grêmio IFC
+                    <img style="border-radius: 100px!important; width: 40px;" src="/utils/img/IMG-20190905-WA0000.jpg"> Grêmio IFC
                 </a>
                 <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarCollapse"
                         aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
@@ -117,7 +117,7 @@ class Facilitador
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="./Transparencia.html">
+                            <a class="nav-link" href="/transparencia">
                                 <i class="fas fa-receipt"></i>&nbsp;Transparência
                                 <span class="sr-only">(current)</span>
                             </a>
