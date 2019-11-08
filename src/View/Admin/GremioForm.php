@@ -1,16 +1,15 @@
 <?php
 /**
  * Criado: Fernando Cristen
- * Data: 03/09/2019
- * Hora: 21:35
+ * Data: 28/10/2019
+ * Hora: 18:16
  */
 
 namespace View\Admin;
 
-
 use Estrutura\View\BaseFormView;
 
-class TemaForm extends BaseFormView
+class GremioForm extends BaseFormView
 {
     public function createHtml()
     {
@@ -26,16 +25,11 @@ class TemaForm extends BaseFormView
                 <input readonly="readonly" type="text" class="form-control" name="id" required>
             </div>
             <div class="form-group">
-                <label for="exampleFormControlInput1">Nome</label>
-                <input type="text" class="form-control" name="nome" required>
-            </div>
-            <div class="form-group">
-                <label for="exampleFormControlTextarea1">Descricao</label>
-                <textarea class="form-control" name="descricao" rows="2" required></textarea>
-            </div>
+                <label for="exampleFormControlInput1">Chapa</label>
+                <input type="text" class="form-control" name="chapa" required>
+            </div>            
             ' . $botao . '
         </form>';
     }
-
 }
 ?>

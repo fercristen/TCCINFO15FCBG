@@ -18,11 +18,6 @@ class Gremio{
     protected $nomeChapa;
 
     /**
-     * @Column(name="gre_data_posse", type="date", nullable=false)
-     */
-    protected $dataPosse;
-
-    /**
      * @OneToMany(targetEntity="Integrante", mappedBy="gremio")
      */
     public $integrantes;
@@ -30,6 +25,22 @@ class Gremio{
     public function __construct()
     {
         $this->integrantes = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * @param mixed $id
+     */
+    public function setId($id)
+    {
+        $this->id = $id;
     }
 
 
@@ -42,30 +53,6 @@ class Gremio{
     public function setNomeChapa($nomeChapa)
     {
         $this->nomeChapa = $nomeChapa;
-    }
-
-
-    public function getDataPosse()
-    {
-        return $this->dataPosse;
-    }
-
-
-    public function setDataPosse($dataPosse)
-    {
-        $this->dataPosse = $dataPosse;
-    }
-
-
-    public function getGremiocol()
-    {
-        return $this->gremiocol;
-    }
-
-
-    public function setGremiocol($gremiocol)
-    {
-        $this->gremiocol = $gremiocol;
     }
 
     public function getIntegrantes()

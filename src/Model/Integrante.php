@@ -1,22 +1,17 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: LaDev
- * Date: 26/06/2019
- * Time: 16:13
- */
 
 namespace Model;
 /**
  * @Entity
  * @Table(name="integrantes")
  */
-class Integrante{
+class Integrante
+{
     /**
-    * @Id
-    * @Column(name="int_id", type="integer")
-    * @GeneratedValue(strategy="IDENTITY")
-    */
+     * @Id
+     * @Column(name="int_id", type="integer")
+     * @GeneratedValue(strategy="IDENTITY")
+     */
     protected $id;
     /**
      * @Column(name="int_nome", type="string")
@@ -37,36 +32,35 @@ class Integrante{
      */
     protected $gremio;
 
-    public function __construct($id, $nome, $cargo, $adm){
-        $this->id = $id;
-        $this->nome = $nome;
-        $this->cargo = $cargo;
-}
-public function getId()
-{
-    return $this->id;
-}
-public function setId($id)
-{
-    $this->id = $id;
-}
-public function getNome()
-{
-    return $this->nome;
-}
-public function setNome($nome)
-{
-    $this->nome = $nome;
-}
-public function getCargo()
-{
-    return $this->cargo;
-}
-public function setCargo($cargo)
-{
-    $this->cargo = $cargo;
-}
+    public function getId()
+    {
+        return $this->id;
+    }
 
+    public function setId($id)
+    {
+        $this->id = $id;
+    }
+
+    public function getNome()
+    {
+        return $this->nome;
+    }
+
+    public function setNome($nome)
+    {
+        $this->nome = $nome;
+    }
+
+    public function getCargo()
+    {
+        return $this->cargo;
+    }
+
+    public function setCargo($cargo)
+    {
+        $this->cargo = $cargo;
+    }
 
 
 }

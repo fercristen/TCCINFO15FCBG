@@ -49,4 +49,18 @@ class IntegrantesController extends BaseController
         }
         return $dados;
     }
+
+    public function delete(){
+        try{
+            $noticia = $this->getEntityManager()->getRepository(Integrante::class)->find($this->getResquestParam('id'));
+            if($noticia) {
+                $this->getEntityManager()->remove($noticia);
+                $this->getEntityManager()->flush();
+                echo json_encode(['message' => 'Excluido entidade #'.$this->getResquestParam('id')]) ;
+                return;
+            }
+        }catch (\Exception $exception){
+            echo json_encode(['message' => 'Erro ao excluir entidade, tente novamente']);
+        }
+    }
 }

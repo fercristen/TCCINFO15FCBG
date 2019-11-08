@@ -42,7 +42,7 @@ class Facilitador
         <button onclick="selectMenu(\'noticias\')" class="list-group-item list-group-item-action bg-light">Noticias</button>
         <button onclick="selectMenu(\'temas\')" class="list-group-item list-group-item-action bg-light">Temas</button>
         <button onclick="selectMenu(\'integrantes\')"  class="list-group-item list-group-item-action bg-light">Integrantes</button>
-        <button onclick="selectMenu(\'grêmio\')"  class="list-group-item list-group-item-action bg-light">Grêmio</button>
+        <button onclick="selectMenu(\'gremios\')"  class="list-group-item list-group-item-action bg-light">Grêmio</button>
         <button onclick="selectMenu(\'transparencia\')"  class="list-group-item list-group-item-action bg-light">Transparência</button>
       </div>
     </div>
