@@ -40,10 +40,6 @@ class NoticiaForm extends BaseFormView
                 <label>Imagem Capa</label>
                 <input accept="image/*" type="file" class="form-control" required name="capa" >
             </div>
-            <div class="form-group">
-                <label>Imagens Adicionais</label>
-                <input accept="image/*" type="file" class="form-control" name="imagens" multiple>
-            </div>
             '.$botao.'
         </form>
         <script>
