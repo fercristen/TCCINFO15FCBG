@@ -35,8 +35,12 @@ class RouterDefine
                 'control' => 'Control::Site::FrontEndController.ler',
                 'privilegio' => self::ALL_USER,
             ],
-            '/transparencia' => [
-                'control' => 'Control::Site::FrontEndController.transparencia',
+            '/about' => [
+                'control' => 'Control::Site::FrontEndController.about',
+                'privilegio' => self::ALL_USER,
+            ],
+            '/movimentacoes' => [
+                'control' => 'Control::Site::FrontEndController.movimentacoes',
                 'privilegio' => self::ALL_USER,
             ],
             //----------Base Admin
@@ -117,16 +121,40 @@ class RouterDefine
                 'control' => 'Control::Admin::IntegrantesController.index',
                 'privilegio' => self::ADMIN_USER,
             ],
-            '/addIntegrantes' => [
+            '/addIntegrante' => [
                 'control' => 'Control::Admin::IntegrantesController.add',
                 'privilegio' => self::ADMIN_USER,
             ],
-            '/editIntegrantes' => [
+            '/editIntegrante' => [
                 'control' => 'Control::Admin::IntegrantesController.edit',
                 'privilegio' => self::ADMIN_USER,
             ],
-            '/deleteIntegrantes' => [
+            '/deleteIntegrante' => [
                 'control' => 'Control::Admin::IntegrantesController.delete',
+                'privilegio' => self::ADMIN_USER,
+            ],
+            '/viewIntegrante' => [
+                'control' => 'Control::Admin::IntegrantesController.view',
+                'privilegio' => self::ADMIN_USER,
+            ],
+            '/movimentacao' => [
+                'control' => 'Control::Admin::MovimentacaoController.index',
+                'privilegio' => self::ADMIN_USER,
+            ],
+            '/addMovimentacao' => [
+                'control' => 'Control::Admin::MovimentacaoController.add',
+                'privilegio' => self::ADMIN_USER,
+            ],
+            '/editMovimentacao' => [
+                'control' => 'Control::Admin::MovimentacaoController.edit',
+                'privilegio' => self::ADMIN_USER,
+            ],
+            '/deleteMovimentacao' => [
+                'control' => 'Control::Admin::MovimentacaoController.delete',
+                'privilegio' => self::ADMIN_USER,
+            ],
+            '/viewMovimentacao' => [
+                'control' => 'Control::Admin::MovimentacaoController.view',
                 'privilegio' => self::ADMIN_USER,
             ],
         );

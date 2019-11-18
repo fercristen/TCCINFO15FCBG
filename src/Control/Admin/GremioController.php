@@ -11,9 +11,7 @@ namespace Control\Admin;
 use Estrutura\Controller\BaseController;
 use Estrutura\Model\Resposta;
 use Model\Gremio;
-use Model\Noticia;
 use View\Admin\GremioForm;
-use View\Admin\GremioFormForm;
 
 class GremioController extends BaseController
 {
@@ -30,7 +28,7 @@ class GremioController extends BaseController
             'Excluir' => 'deleteGremio',
         ];
         $acoes = [
-            'Adicionar' => 'addIntegrante',
+            'Adicionar' => 'addGremio',
         ];
         $dados = $this->modeloParaGrid();
         $resposta = new Resposta($fields, $dados, $acoesLinha, $acoes);
@@ -73,8 +71,7 @@ class GremioController extends BaseController
                 $this->getEntityManager()->flush();
                 $this->redirectPage("/admin");
             }catch (\Exception $exception){
-                echo json_encode(['message' => $exception->getMessage()]);
-                //$this->redirectPage("/admin");
+                $this->redirectPage("/admin");
             }
         }else{
             $view = new GremioForm( '/addGremio');
@@ -86,8 +83,7 @@ class GremioController extends BaseController
         if($this->isPost()){
             try{
                 $gremio = $this->getEntityManager()->getRepository(Gremio::class)->find($this->getResquestParam('id'));
-                $gremio->setNomeChapa($this->getDataParam('nomeChapa'));
-
+                $gremio->setNomeChapa($this->getDataParam('chapa'));
                 $this->getEntityManager()->persist($gremio);
                 $this->getEntityManager()->flush();
                 $this->redirectPage("/admin");
@@ -95,10 +91,25 @@ class GremioController extends BaseController
                 $this->redirectPage("/admin");
             }
         }else{
-            $noticia = $this->getEntityManager()->getRepository(Gremio::class)->find($this->getResquestParam('id'));
+            $gremio = $this->getEntityManager()->getRepository(Gremio::class)->find($this->getResquestParam('id'));
             $view = new GremioForm('/editGremio');
             $view->setDados($this->modeloParaForm($gremio));
             $view->getFormatoJSON();
         }
+    }
+
+    public function view(){
+        $gremio = $this->getEntityManager()->getRepository(Gremio::class)->find($this->getResquestParam('id'));
+        $view = new GremioForm('/viewIntegrante', true);
+        $view->setDados($this->modeloParaForm($gremio));
+        $view->getFormatoJSON();
+    }
+
+    public function modeloParaForm(Gremio $gremio){
+        $dado = [
+            'id' => $gremio->getId(),
+            'chapa' =>  $gremio->getNomeChapa(),
+        ];
+        return $dado;
     }
 }

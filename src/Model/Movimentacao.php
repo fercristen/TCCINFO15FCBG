@@ -19,7 +19,7 @@ class Movimentacao{
     /**
      * @Id
      * @Column(name="mov_id", type="integer")
-     * @@GeneretedValue(strategy="IDENTITY")
+     * @GeneratedValue(strategy="IDENTITY")
      */
     protected $id;
 
@@ -38,16 +38,19 @@ class Movimentacao{
     protected $descricao;
 
     /**
-     * @Column(name="mov_data", type="date")
+     * @return mixed
      */
-    protected $data;
-
-    public function __construct($titulo, $tipo, $descricao, $data)
+    public function getId()
     {
-        $this->titulo = $titulo;
-        $this->tipo = $tipo;
-        $this->descricao = $descricao;
-        $this->data = $data;
+        return $this->id;
+    }
+
+    /**
+     * @param mixed $id
+     */
+    public function setId($id)
+    {
+        $this->id = $id;
     }
 
     public function getTitulo()
@@ -80,18 +83,6 @@ class Movimentacao{
     public function setDescricao($descricao)
     {
         $this->descricao = $descricao;
-    }
-
-
-    public function getData()
-    {
-        return $this->data;
-    }
-
-
-    public function setData($data)
-    {
-        $this->data = $data;
     }
 
     public static function getTipoList(){

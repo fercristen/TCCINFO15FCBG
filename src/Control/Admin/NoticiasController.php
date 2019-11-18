@@ -11,6 +11,7 @@ namespace Control\Admin;
 use Estrutura\Controller\BaseController;
 use Estrutura\Model\Resposta;
 use Model\Noticia;
+use Model\NoticiaImagem;
 use View\Admin\NoticiaForm;
 
 class NoticiasController extends BaseController
@@ -66,12 +67,21 @@ class NoticiasController extends BaseController
     public function add(){
         if($this->isPost()){
             try{
+                $imagemController = new ImagemController();
                 $noticia = new Noticia();
                 $noticia->setTitulo($this->getDataParam('titulo'));
                 $noticia->setResumo($this->getDataParam('resumo'));
                 $noticia->setCorpo($this->getDataParam('corpo'));
                 $noticia->setData(new \DateTime());
                 $this->getEntityManager()->persist($noticia);
+                //Imagem de capa
+                $imagemCapa = $imagemController->novaImagem('capa');
+                $noticiaImagemCapa = new NoticiaImagem();
+                $noticiaImagemCapa->setNoticia($noticia);
+                $noticiaImagemCapa->setImagem($imagemCapa);
+                $noticiaImagemCapa->setImagem($imagemCapa);
+                $noticiaImagemCapa->setTituloImagem("Capa da noticia");
+                $this->getEntityManager()->persist($noticiaImagemCapa);
                 $this->getEntityManager()->flush();
                 $this->redirectPage("/admin");
             }catch (\Exception $exception){

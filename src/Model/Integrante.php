@@ -21,10 +21,6 @@ class Integrante
      * @Column(name="int_cargo", type="string")
      */
     protected $cargo;
-    /**
-     * @Column(name="int_adm", type="boolean")
-     */
-    protected $adm;
 
     /**
      * @ManyToOne(targetEntity="Gremio", inversedBy="integrantes")
@@ -62,5 +58,20 @@ class Integrante
         $this->cargo = $cargo;
     }
 
+    /**
+     * @return mixed
+     */
+    public function getGremio()
+    {
+        return $this->gremio;
+    }
+
+    /**
+     * @param mixed $gremio
+     */
+    public function setGremio($gremio)
+    {
+        $this->gremio = $gremio;
+    }
 
 }

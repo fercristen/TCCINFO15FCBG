@@ -14,7 +14,7 @@ namespace Model;
 class NoticiaImagem{
 
     const TIPO_NORMAL = 1;
-    const TIPO_DESCRICAO = 2;
+    const TIPO_CAPA = 2;
 
     /**
      * @Id
@@ -29,13 +29,13 @@ class NoticiaImagem{
 
     /**
      * @ManyToOne(targetEntity="Imagem")
-     * @JoinColumn(nullable=false)
+     * @JoinColumn(name="imagem_id", referencedColumnName="img_id", nullable=false)
      */
     private $imagem;
 
     /**
      * @ManyToOne(targetEntity="Noticia")
-     * @JoinColumn(nullable=false)
+     * @JoinColumn(name="noticia_id", referencedColumnName="not_id", nullable=false)
      */
     private $noticia;
 

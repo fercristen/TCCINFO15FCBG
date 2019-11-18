@@ -10,6 +10,7 @@ use Model\Noticia;
 use View\Site\FrontEndAllNoticiasView;
 use View\Site\FrontEndIndexView;
 use View\Site\FrontEndLerNoticia;
+use View\Site\FrontEndMovimentacoes;
 use View\Site\FrontEndTransparencia;
 
 class FrontEndController extends BaseController
@@ -33,8 +34,12 @@ class FrontEndController extends BaseController
         ContainerController::pageNotFound();
     }
 
-    public function transparencia(){
+    public function about(){
         return new FrontEndTransparencia();
+    }
+
+    public function movimentacoes(){
+        return new FrontEndMovimentacoes();
     }
 
 

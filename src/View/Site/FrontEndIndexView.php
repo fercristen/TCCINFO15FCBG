@@ -7,6 +7,7 @@ namespace View\Site;
 use Estrutura\View\BaseView;
 use Estrutura\View\Facilitador;
 use Model\Noticia;
+use Model\NoticiaImagem;
 
 class FrontEndIndexView extends BaseView
 {
@@ -49,14 +50,18 @@ class FrontEndIndexView extends BaseView
             </h1>
             <div class="container">
                 <div class="row">
-                    <?php foreach ($noticias as $noticia){ ?>
+                    <?php foreach ($noticias as $noticia){
+                        /** @var  $imagemNoticia NoticiaImagem*/
+                        $imagemNoticia = $this->getEntityManager()->getRepository(NoticiaImagem::class)->findOneBy(['noticia'=> $noticia]);
+                        $patch = $imagemNoticia->getImagem()->getPatch();
+                        ?>
 
                         <div class="col-sm-6">
                             <h2><?= $noticia->getTitulo();  ?></h2>
                             <div class="card shadow-sm">
                                 <div class="bd-placeholder-img card-img-top" width="100%" height="225px">
                                     <img width="100%" height="225px"
-                                         src="/utils/img/noticias/<?= $noticia->getId();?>.jpg">
+                                         src="/utils/<?= $patch ?>">
                                     </div>
 
                                 <div class="card-body">

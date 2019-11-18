@@ -43,7 +43,7 @@ class Facilitador
         <button onclick="selectMenu(\'temas\')" class="list-group-item list-group-item-action bg-light">Temas</button>
         <button onclick="selectMenu(\'integrantes\')"  class="list-group-item list-group-item-action bg-light">Integrantes</button>
         <button onclick="selectMenu(\'gremios\')"  class="list-group-item list-group-item-action bg-light">Grêmio</button>
-        <button onclick="selectMenu(\'transparencia\')"  class="list-group-item list-group-item-action bg-light">Transparência</button>
+        <button onclick="selectMenu(\'movimentacao\')"  class="list-group-item list-group-item-action bg-light">Movimentações</button>
       </div>
     </div>
     <!-- /#sidebar-wrapper -->
@@ -117,8 +117,14 @@ class Facilitador
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="/transparencia">
-                                <i class="fas fa-receipt"></i>&nbsp;Transparência
+                            <a class="nav-link" href="/about">
+                                <i class="fas fa-receipt"></i>&nbsp;Sobre Nós
+                                <span class="sr-only">(current)</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/movimentacoes">
+                                <i class="fas fa-money-check-alt"></i>&nbsp;Movimentações
                                 <span class="sr-only">(current)</span>
                             </a>
                         </li>

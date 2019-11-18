@@ -5,13 +5,16 @@ namespace Model;
  * @Entity
  * @Table(name="gremio")
  */
-class Gremio{
+class Gremio
+{
+
     /**
      * @Id
      * @Column(name="gre_id", type="integer")
-     * @GeneretedValue(strategy="IDENTITY")
+     * @GeneratedValue(strategy="IDENTITY")
      */
     protected $id;
+
     /**
      * @Column(name="gre_nome_chapa", type="string", nullable=false)
      */
@@ -43,29 +46,37 @@ class Gremio{
         $this->id = $id;
     }
 
-
+    /**
+     * @return mixed
+     */
     public function getNomeChapa()
     {
         return $this->nomeChapa;
     }
 
-
+    /**
+     * @param mixed $nomeChapa
+     */
     public function setNomeChapa($nomeChapa)
     {
         $this->nomeChapa = $nomeChapa;
     }
 
+    /**
+     * @return mixed
+     */
     public function getIntegrantes()
     {
         return $this->integrantes;
     }
 
-
+    /**
+     * @param mixed $integrantes
+     */
     public function setIntegrantes($integrantes)
     {
         $this->integrantes = $integrantes;
     }
-
 
 
 }

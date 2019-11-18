@@ -32,12 +32,6 @@ class Imagem{
      */
     protected $nome;
 
-    function __construct($titulo, $patch, $nome)
-    {
-        $this->titulo = $titulo;
-        $this->patch = $patch;
-        $this->nome = $nome;
-    }
 
     public function getId()
     {

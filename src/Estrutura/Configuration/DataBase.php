@@ -8,7 +8,7 @@ class DataBase
 
     public static function getConnectionConfiguration(){
         $conn = array(
-            'dbname' => 'portal_gremio_dev',
+            'dbname' => 'dev_gremio',
             'user' => 'root',
             'host' => 'localhost',
             'driver' => 'pdo_mysql',

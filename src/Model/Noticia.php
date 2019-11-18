@@ -11,7 +11,8 @@ namespace Model;
  * @Entity
  * @Table(name="noticias")
  */
-class Noticia{
+class Noticia
+{
     /**
      * @Id
      * @Column(name="not_id", type="integer")
@@ -19,17 +20,20 @@ class Noticia{
      */
     protected $id;
     /**
-     *@Column(name="not_titulo")
+     * @Column(name="not_titulo")
      */
     protected $titulo;
+
     /**
-     *@Column(name="not_resumo", type="string")
+     * @Column(name="not_resumo", type="string")
      */
     protected $resumo;
+
     /**
-     *@Column(name="not_corpo", type="text")
+     * @Column(name="not_corpo", type="text")
      */
     protected $corpo;
+
     /**
      * @Column(name="not_data", type="date")
      */

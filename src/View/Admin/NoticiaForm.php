@@ -19,7 +19,7 @@ class NoticiaForm extends BaseFormView
         }
         return '
         <script src="utils/js/editor.js"></script>
-        <form action="'.$this->getRouter().'" method="POST">
+        <form action="'.$this->getRouter().'" enctype="multipart/form-data" method="POST">
             <div class="form-group">
                 <label for="id">#</label>
                 <input type="text" readonly="readonly" class="form-control" name="id">
@@ -35,6 +35,14 @@ class NoticiaForm extends BaseFormView
             <div class="form-group">
                 <label>Conteudo</label>
                 <textarea class="form-control" name="corpo" rows="5"></textarea>
+            </div>
+            <div class="form-group">
+                <label>Imagem Capa</label>
+                <input accept="image/*" type="file" class="form-control" required name="capa" >
+            </div>
+            <div class="form-group">
+                <label>Imagens Adicionais</label>
+                <input accept="image/*" type="file" class="form-control" name="imagens" multiple>
             </div>
             '.$botao.'
         </form>
