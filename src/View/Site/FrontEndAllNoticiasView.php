@@ -38,7 +38,7 @@ class FrontEndAllNoticiasView extends BaseView
                             <h2><?= $noticia->getTitulo();  ?></h2>
                             <div class="card shadow-sm">
                                 <div class="bd-placeholder-img card-img-top" width="100%" height="225px">
-                                    <img width="100%" height="225px" src="/utils/<?= $patch ?>">>
+                                    <img width="100%" height="225px" src="/utils/<?= $patch ?>">
                                 </div>
 
                                 <div class="card-body">
