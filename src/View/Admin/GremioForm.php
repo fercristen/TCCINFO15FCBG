@@ -27,6 +27,13 @@ class GremioForm extends BaseFormView
             <div class="form-group">
                 <label for="exampleFormControlInput1">Chapa</label>
                 <input type="text" class="form-control" name="chapa" required>
+            </div>
+            <div class="form-group">
+                <label for="exampleFormControlInput1">Gremio Atual?</label>
+                <select class="form-control" name="atual" required>
+                    <option value="false">Nao</option>
+                    <option value="true">Sim</option>
+                </select>
             </div>            
             ' . $botao . '
         </form>';

@@ -48,6 +48,6 @@ class FrontEndMovimentacoes extends BaseView
                 </div>
             </div>
         </main>
-        <?php
+         <?php
     }
 }

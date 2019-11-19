@@ -25,13 +25,16 @@ abstract class BaseFormView extends BaseController
 
     private $isView;
 
+    private $isEdit;
+
     abstract public function createHtml();
 
-    public function __construct($router, $isView = false)
+    public function __construct($router, $isView = false, $isEdit = false)
     {
         parent::__construct();
         $this->setRouter($router);
         $this->setIsView($isView);
+        $this->setIsEdit($isEdit);
         $this->setHtml($this->createHtml());
     }
 
@@ -105,6 +108,22 @@ abstract class BaseFormView extends BaseController
     public function setIsView($isView)
     {
         $this->isView = $isView;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getisEdit()
+    {
+        return $this->isEdit;
+    }
+
+    /**
+     * @param mixed $isEdit
+     */
+    public function setIsEdit($isEdit)
+    {
+        $this->isEdit = $isEdit;
     }
 
 

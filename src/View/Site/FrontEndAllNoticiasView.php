@@ -12,18 +12,28 @@ use Estrutura\View\BaseView;
 use Estrutura\View\Facilitador;
 use Model\Noticia;
 use Model\NoticiaImagem;
+use Model\Tema;
 
 class FrontEndAllNoticiasView extends BaseView
 {
     public function createHtml()
     {
-        $noticias = $this->getEntityManager()->getRepository(Noticia::class)->findBy([], ['id' => 'desc']);
+        $tema = $this->getResquestParam('tema');
+        $titulo = 'Todas Notícias';
+        if($tema){
+            $tema = $this->getEntityManager()->getRepository(Tema::class)->find($tema);
+            $titulo = $tema->getNome();
+            $noticias = $this->getEntityManager()->getRepository(Noticia::class)->findBy(['tema' => $tema], ['id' => 'desc']);
+        }else{
+            $noticias = $this->getEntityManager()->getRepository(Noticia::class)->findBy([], ['id' => 'desc']);
+        }
+        $temNoticia = count($noticias);
 ?>
         <?php Facilitador::createMenuSite() ?>
         <main style="margin-top: 75px" role="main" class="container">
             <h1 class="mt-5">
                 <font style="vertical-align: inherit;">
-                    <font style="vertical-align: inherit;">Notícias</font>
+                    <font style="vertical-align: inherit;"><?= $titulo?></font>
                 </font>
             </h1>
             <div class="container">
@@ -35,6 +45,9 @@ class FrontEndAllNoticiasView extends BaseView
                         ?>
 
                         <div class="col-sm-6">
+                            <div>
+                                <span><?= $noticia->getTema()->getNome();  ?></span>
+                            </div>
                             <h2><?= $noticia->getTitulo();  ?></h2>
                             <div class="card shadow-sm">
                                 <div class="bd-placeholder-img card-img-top" width="100%" height="225px">
@@ -56,13 +69,7 @@ class FrontEndAllNoticiasView extends BaseView
                                         </div>
                                         <small class="text-muted">
                                             <font style="vertical-align: inherit;">
-                                                <font style="vertical-align: inherit;"><i class="far fa-star"></i>&nbsp;15
-                                                    Curtiram</font>
-                                            </font>
-                                        </small>
-                                        <small class="text-muted">
-                                            <font style="vertical-align: inherit;">
-                                                <font style="vertical-align: inherit;"><i class="far fa-clock"></i>&nbsp;9 min
+                                                <font style="vertical-align: inherit;"><i class="far fa-clock"></i>&nbsp;<?= $noticia->getData()->format('d/m/Y')?>
                                                 </font>
                                             </font>
                                         </small>
@@ -70,11 +77,14 @@ class FrontEndAllNoticiasView extends BaseView
                                 </div>
                             </div>
                         </div>
-                    <?php }?>
+                    <?php }
+                    if($temNoticia < 1){
+                        echo '<br><br><br><div class="alert alert-danger col-sm-12" style="text-align: center"><h3>Nenhuma Notícia Encontrada</h3></div>';
+                    }
+                    ?>
                 </div>
             </div>
         </main>
-        <?php Facilitador::createFooterSite()?>
 <?php
     }
 }

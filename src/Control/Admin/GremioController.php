@@ -21,6 +21,7 @@ class GremioController extends BaseController
         $fields = [
             'id' => '#',
             'nomeChapa' => 'Chapa',
+            'atual' => 'Atual',
         ];
         $acoesLinha = [
             'Editar' => 'editGremio',
@@ -41,9 +42,14 @@ class GremioController extends BaseController
         /** @var $gremios Gremio[] */
         $gremios = $this->getEntityManager()->getRepository(Gremio::class)->findAll();
         foreach ($gremios as $gremio) {
+            $atual = 'Sim';
+            if(!$gremio->getMandatoAtual()){
+                $atual = 'Nao';
+            }
             $dados[] = [
                 'id' => $gremio->getId(),
                 'nomeChapa' => $gremio->getNomeChapa(),
+                'atual' => $atual,
             ];
         }
         return $dados;
@@ -67,6 +73,7 @@ class GremioController extends BaseController
             try{
                 $gremio = new Gremio();
                 $gremio->setNomeChapa($this->getDataParam('chapa'));
+                $gremio->setMandatoAtual($this->getDataParam('atual'));
                 $this->getEntityManager()->persist($gremio);
                 $this->getEntityManager()->flush();
                 $this->redirectPage("/admin");
@@ -84,6 +91,7 @@ class GremioController extends BaseController
             try{
                 $gremio = $this->getEntityManager()->getRepository(Gremio::class)->find($this->getResquestParam('id'));
                 $gremio->setNomeChapa($this->getDataParam('chapa'));
+                $gremio->setMandatoAtual($this->getDataParam('atual'));
                 $this->getEntityManager()->persist($gremio);
                 $this->getEntityManager()->flush();
                 $this->redirectPage("/admin");
@@ -109,6 +117,7 @@ class GremioController extends BaseController
         $dado = [
             'id' => $gremio->getId(),
             'chapa' =>  $gremio->getNomeChapa(),
+            'atual' =>  $gremio->getMandatoAtual(),
         ];
         return $dado;
     }

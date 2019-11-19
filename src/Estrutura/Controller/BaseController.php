@@ -57,7 +57,13 @@ class BaseController
     public function getDataParam($name){
         $dados = $this->getData();
         if (isset($dados[$name])){
-            return $dados[$name];
+            $dado = $dados[$name];
+            if($dado == 'true'){
+                return true;
+            }elseif ($dado == 'false'){
+                return false;
+            }
+            return $dado;
         }
         return null;
     }

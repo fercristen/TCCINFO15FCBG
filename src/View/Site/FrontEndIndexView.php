@@ -6,7 +6,7 @@ namespace View\Site;
 
 use Estrutura\View\BaseView;
 use Estrutura\View\Facilitador;
-use Model\Noticia;
+use Model\Imagem;use Model\Noticia;
 use Model\NoticiaImagem;
 
 class FrontEndIndexView extends BaseView
@@ -15,24 +15,23 @@ class FrontEndIndexView extends BaseView
     public function createHtml()
     {
         $noticias = $this->getEntityManager()->getRepository(Noticia::class)->findBy([], ['id' => 'desc'], 6);
+        $banners = $this->getEntityManager()->getRepository(Imagem::class)->findBy(['tipo' => Imagem::TIPO_BANNER, 'ativo' => true]);
         ?>
 
        <?php Facilitador::createMenuSite() ?>
         <main style="margin-top: 75px" role="main" class="container">
             <div style="margin: 20px;" id="carouselExampleControls" class="carousel slide" data-ride="carousel">
                 <div class="carousel-inner">
-                    <div class="carousel-item active">
-                        <img src="http://ibirama.ifc.edu.br/wp-content/uploads/2016/12/banner_Site-1140x168-1350x200.png"
-                             class="d-block w-100" alt="...">
-                    </div>
-                    <div class="carousel-item">
-                        <img src="http://ibirama.ifc.edu.br/wp-content/uploads/2019/04/Fullbanner-IFC-Drops-1350x200.png"
-                             class="d-block w-100" alt="...">
-                    </div>
-                    <div class="carousel-item">
-                        <img src="http://ibirama.ifc.edu.br/wp-content/uploads/2019/01/Fullbanner-Segunda-Chamada-1350x200.gif"
-                             class="d-block w-100" alt="...">
-                    </div>
+                    <?php foreach ($banners as $key => $banner) {
+                        $active = '';
+                        if($key == 0){
+                            $active = 'active';
+                        }
+                        ?>
+                        <div class="carousel-item <?= $active?>">
+                            <img src="/utils/<?= $banner->getPatch() ?>" class="d-block w-100" alt="...">
+                        </div>
+                    <?php }?>
                 </div>
                 <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
                     <span class="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -57,6 +56,9 @@ class FrontEndIndexView extends BaseView
                         ?>
 
                         <div class="col-sm-6">
+                            <div>
+                                <span><?= $noticia->getTema()->getNome();  ?></span>
+                            </div>
                             <h2><?= $noticia->getTitulo();  ?></h2>
                             <div class="card shadow-sm">
                                 <div class="bd-placeholder-img card-img-top" width="100%" height="225px">
@@ -79,13 +81,7 @@ class FrontEndIndexView extends BaseView
                                         </div>
                                         <small class="text-muted">
                                             <font style="vertical-align: inherit;">
-                                                <font style="vertical-align: inherit;"><i class="far fa-star"></i>&nbsp;15
-                                                    Curtiram</font>
-                                            </font>
-                                        </small>
-                                        <small class="text-muted">
-                                            <font style="vertical-align: inherit;">
-                                                <font style="vertical-align: inherit;"><i class="far fa-clock"></i>&nbsp;9 min
+                                                <font style="vertical-align: inherit;"><i class="far fa-clock"></i>&nbsp;<?= $noticia->getData()->format('d/m/Y')?>
                                                 </font>
                                             </font>
                                         </small>

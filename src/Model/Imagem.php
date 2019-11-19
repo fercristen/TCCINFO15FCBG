@@ -32,6 +32,17 @@ class Imagem{
      */
     protected $nome;
 
+    /**
+     * @Column(name="img_tipo", type="smallint")
+     */
+    protected $tipo;
+
+
+    /**
+     * @Column(name="img_ativo", type="boolean")
+     */
+    protected $ativo;
+
 
     public function getId()
     {
@@ -73,6 +84,38 @@ class Imagem{
      function setNome($nome)
     {
         $this->nome = $nome;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getTipo()
+    {
+        return $this->tipo;
+    }
+
+    /**
+     * @param mixed $tipo
+     */
+    public function setTipo($tipo)
+    {
+        $this->tipo = $tipo;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getAtivo()
+    {
+        return $this->ativo;
+    }
+
+    /**
+     * @param mixed $ativo
+     */
+    public function setAtivo($ativo)
+    {
+        $this->ativo = $ativo;
     }
 
 }

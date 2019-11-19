@@ -39,6 +39,12 @@ class Noticia
      */
     protected $data;
 
+    /**
+     * @ManyToOne(targetEntity="Tema")
+     * @JoinColumn(name="tem_id", referencedColumnName="tem_id", nullable=false)
+     */
+    private $tema;
+
 
     public function getId()
     {
@@ -88,6 +94,22 @@ class Noticia
     public function setData($data)
     {
         $this->data = $data;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getTema()
+    {
+        return $this->tema;
+    }
+
+    /**
+     * @param mixed $tema
+     */
+    public function setTema($tema)
+    {
+        $this->tema = $tema;
     }
 
 

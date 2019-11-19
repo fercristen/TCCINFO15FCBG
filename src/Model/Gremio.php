@@ -25,6 +25,11 @@ class Gremio
      */
     public $integrantes;
 
+    /**
+     * @Column(name="gre_mandato_atual", type="boolean")
+     */
+    protected $mandatoAtual;
+
     public function __construct()
     {
         $this->integrantes = new \Doctrine\Common\Collections\ArrayCollection();
@@ -76,6 +81,22 @@ class Gremio
     public function setIntegrantes($integrantes)
     {
         $this->integrantes = $integrantes;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getMandatoAtual()
+    {
+        return $this->mandatoAtual;
+    }
+
+    /**
+     * @param mixed $mandatoAtual
+     */
+    public function setMandatoAtual($mandatoAtual)
+    {
+        $this->mandatoAtual = $mandatoAtual;
     }
 
 

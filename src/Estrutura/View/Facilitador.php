@@ -8,6 +8,8 @@
 namespace Estrutura\View;
 
 
+use Estrutura\Controller\BaseController;use Model\Tema;
+
 class Facilitador
 {
     public static function createTemplateAdmin(){
@@ -24,6 +26,7 @@ class Facilitador
   <link href="utils/css/bootstrap.min.css" rel="stylesheet">
   <link href="utils/css/simple-sidebar.css" rel="stylesheet">
   <link href="utils/css/datable.css" rel="stylesheet">
+  <link href="utils/css/admin.css" rel="stylesheet">
   <script src="utils/js/jquery.min.js"></script>
   <script src="utils/js/admin-controller.js"></script>
   <script src="utils/js/datatable.js"></script>
@@ -44,6 +47,7 @@ class Facilitador
         <button onclick="selectMenu(\'integrantes\')"  class="list-group-item list-group-item-action bg-light">Integrantes</button>
         <button onclick="selectMenu(\'gremios\')"  class="list-group-item list-group-item-action bg-light">Grêmio</button>
         <button onclick="selectMenu(\'movimentacao\')"  class="list-group-item list-group-item-action bg-light">Movimentações</button>
+        <button onclick="selectMenu(\'banners\')"  class="list-group-item list-group-item-action bg-light">Banners</button>
       </div>
     </div>
     <!-- /#sidebar-wrapper -->
@@ -81,6 +85,8 @@ class Facilitador
     }
 
     public static function createMenuSite(){
+        $baseController = new BaseController();
+        $temas = $baseController->getEntityManager()->getRepository(Tema::class)->findAll();
         ?>
         <style>
             .color-base{
@@ -95,8 +101,8 @@ class Facilitador
         </style>
         <header>
             <nav class="navbar navbar-expand-md navbar-dark fixed-top color-base">
-                <a class="navbar-brand" href="#">
-                    <img style="border-radius: 100px!important; width: 40px;" src="/utils/img/IMG-20190905-WA0000.jpg"> Grêmio IFC
+                <a class="navbar-brand" href="/index">
+                    <img style="border-radius: 100px!important; width: 40px;" src="/utils/img/logo.png"> Grêmio IFC
                 </a>
                 <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarCollapse"
                         aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
@@ -110,11 +116,14 @@ class Facilitador
                                 <span class="sr-only">(current)</span>
                             </a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="/allNotices">
-                                <i class="far fa-newspaper"></i>&nbsp;Todas Notícias
-                                <span class="sr-only">(current)</span>
-                            </a>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false"> <i class="far fa-newspaper"></i> Noticias</a>
+                            <div class="dropdown-menu">
+                                <?php foreach ($temas as $tema){ ?>
+                                    <a class="dropdown-item" href="/allNotices?tema=<?= $tema->getId()?>"><?=$tema->getNome()?></a>
+                                <?php } ?>
+                                <a class="dropdown-item" href="/allNotices">Todas Notícias</a>
+                            </div>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="/about">

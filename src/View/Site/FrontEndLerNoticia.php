@@ -31,11 +31,17 @@ class FrontEndLerNoticia extends BaseView
         </br>
         </br>
         </br>
+
         <div class="container">
             <div style="text-align: center" id="titulo">
-                <h1><?php
+                <h1>
+                    <?php
                     echo $this->noticia->getTitulo();
-                    ?></h1>
+                    ?>
+                </h1>
+                <small style="vertical-align: inherit;"><i class="far fa-clock"></i>&nbsp;
+                    <?php echo $this->noticia->getData()->format('d/m/Y')?>
+                </small>
             </div>
             <div id="texton">
                 <p><?php   echo $this->noticia->getCorpo();?></p>

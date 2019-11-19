@@ -13,7 +13,7 @@ use Model\Imagem;
 
 class ImagemController extends BaseController
 {
-    public function novaImagem($fileName, $persist = true){
+    public function novaImagem($fileName, $tipo = Imagem::TIPO_NOTICIA, $persist = true){
         $nome = $_FILES[$fileName]['tmp_name'];
         $nomeAll = $_FILES[$fileName]['name'];
         $date = new \DateTime();
@@ -24,6 +24,8 @@ class ImagemController extends BaseController
         $imagem->setTitulo($nomeAll);
         $imagem->setNome($nomeAll);
         $imagem->setPatch($path);
+        $imagem->setTipo($tipo);
+        $imagem->setAtivo(true);
         if($persist){
             $this->getEntityManager()->persist($imagem);
         }

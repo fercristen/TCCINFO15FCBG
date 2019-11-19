@@ -38,6 +38,7 @@ function selectMenu(router) {
                         trBody.appendChild(td);
                     });
                 var tdActions = document.createElement('td');
+                tdActions.className = 'actions';
                 tdActions.innerHTML = criaAcoesTable(data.acoesLinha, id, router);
                 trBody.appendChild(tdActions);
                 tbody.append(trBody);

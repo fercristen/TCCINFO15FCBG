@@ -12,6 +12,7 @@ use Estrutura\Controller\BaseController;
 use Estrutura\Model\Resposta;
 use Model\Noticia;
 use Model\NoticiaImagem;
+use Model\Tema;
 use View\Admin\NoticiaForm;
 
 class NoticiasController extends BaseController
@@ -22,6 +23,7 @@ class NoticiasController extends BaseController
             'id' => '#',
             'titulo' => 'Titulo',
             'data' => 'Data',
+            'tema' => 'Tema',
         ];
         $acoesLinhas = [
             'Editar' => 'editNoticia',
@@ -45,6 +47,7 @@ class NoticiasController extends BaseController
                 'id' => $noticia->getId(),
                 'titulo' =>  $noticia->getTitulo(),
                 'data' =>  $noticia->getData()->format('d/m/Y'),
+                'tema' =>  $noticia->getTema()->getNome(),
             ];
         }
         return $dados;
@@ -72,6 +75,8 @@ class NoticiasController extends BaseController
                 $noticia->setTitulo($this->getDataParam('titulo'));
                 $noticia->setResumo($this->getDataParam('resumo'));
                 $noticia->setCorpo($this->getDataParam('corpo'));
+                $tema = $this->getEntityManager()->getRepository(Tema::class)->find($this->getDataParam('tema'));
+                $noticia->setTema($tema);
                 $noticia->setData(new \DateTime());
                 $this->getEntityManager()->persist($noticia);
                 //Imagem de capa
@@ -85,11 +90,10 @@ class NoticiasController extends BaseController
                 $this->getEntityManager()->flush();
                 $this->redirectPage("/admin");
             }catch (\Exception $exception){
-                echo json_encode(['message' => $exception->getMessage()]);
-                //$this->redirectPage("/admin");
+                $this->redirectPage("/admin");
             }
         }else{
-            $view = new NoticiaForm('/addNoticia');
+            $view = new NoticiaForm('/addNoticia', false, false, $this->getListaTemas());
             $view->getFormatoJSON();
         }
     }
@@ -101,7 +105,8 @@ class NoticiasController extends BaseController
                 $noticia->setTitulo($this->getDataParam('titulo'));
                 $noticia->setResumo($this->getDataParam('resumo'));
                 $noticia->setCorpo($this->getDataParam('corpo'));
-                //$noticia->setData(new \DateTime());
+                $tema = $this->getEntityManager()->getRepository(Tema::class)->find($this->getDataParam('tema'));
+                $noticia->setTema($tema);
                 $this->getEntityManager()->persist($noticia);
                 $this->getEntityManager()->flush();
                 $this->redirectPage("/admin");
@@ -110,7 +115,7 @@ class NoticiasController extends BaseController
             }
         }else{
             $noticia = $this->getEntityManager()->getRepository(Noticia::class)->find($this->getResquestParam('id'));
-            $view = new NoticiaForm('/editNoticia');
+            $view = new NoticiaForm('/editNoticia', false, true, $this->getListaTemas());
             $view->setDados($this->modeloParaForm($noticia));
             $view->getFormatoJSON();
         }
@@ -118,7 +123,7 @@ class NoticiasController extends BaseController
 
     public function view(){
         $noticia = $this->getEntityManager()->getRepository(Noticia::class)->find($this->getResquestParam('id'));
-        $view = new NoticiaForm('/viewNoticia', true);
+        $view = new NoticiaForm('/viewNoticia', true, false, $this->getListaTemas());
         $view->setDados($this->modeloParaForm($noticia));
         $view->getFormatoJSON();
     }
@@ -130,8 +135,12 @@ class NoticiasController extends BaseController
             'data' =>  $noticia->getData()->format('d/m/Y'),
             'resumo' =>  $noticia->getResumo(),
             'corpo' =>  $noticia->getCorpo(),
+            'tema' =>  $noticia->getTema()->getId(),
         ];
         return $dado;
+    }
+    private function getListaTemas(){
+        return $this->getEntityManager()->getRepository(Tema::class)->findAll();
     }
 
 }
