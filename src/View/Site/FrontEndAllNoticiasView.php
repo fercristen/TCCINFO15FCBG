@@ -79,7 +79,7 @@ class FrontEndAllNoticiasView extends BaseView
                         </div>
                     <?php }
                     if($temNoticia < 1){
-                        echo '<br><br><br><div class="alert alert-danger col-sm-12" style="text-align: center"><h3>Nenhuma Notícia Encontrada</h3></div>';
+                        echo '<br><br><br><div class="alert alert-success col-sm-12" style="text-align: center"><h3>Nenhuma Notícia Encontrada</h3></div>';
                     }
                     ?>
                 </div>
