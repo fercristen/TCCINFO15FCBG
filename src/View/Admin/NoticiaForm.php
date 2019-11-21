@@ -47,7 +47,7 @@ class NoticiaForm extends BaseFormView
             </div>
             <div class="form-group">
                 <label for="titulo">Resumo</label>
-                <input class="form-control" name="resumo" required>
+                <input maxlength="255" class="form-control" name="resumo" required>
             </div>
             <div class="form-group">
                 <label>Conteudo</label>

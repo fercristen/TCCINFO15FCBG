@@ -44,7 +44,7 @@ class FrontEndAllNoticiasView extends BaseView
                         $patch = $imagemNoticia->getImagem()->getPatch();
                         ?>
 
-                        <div class="col-sm-6">
+                        <div onclick="location.href='/ler?id=<?= $noticia->getId() ?>';" style="cursor: pointer" class="col-sm-6">
                             <div>
                                 <span><?= $noticia->getTema()->getNome();  ?></span>
                             </div>

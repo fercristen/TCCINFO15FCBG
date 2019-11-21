@@ -31,7 +31,7 @@ class FrontEndLerNoticia extends BaseView
         </br>
         </br>
         </br>
-
+        </br>
         <div class="container">
             <div style="text-align: center" id="titulo">
                 <h1>
@@ -39,14 +39,20 @@ class FrontEndLerNoticia extends BaseView
                     echo $this->noticia->getTitulo();
                     ?>
                 </h1>
-                <small style="vertical-align: inherit;"><i class="far fa-clock"></i>&nbsp;
-                    <?php echo $this->noticia->getData()->format('d/m/Y')?>
-                </small>
+                <p style="color: #9c9b9b">
+                    <?php   echo $this->noticia->getResumo();?>
+                </p>
             </div>
             <div id="texton">
-                <p><?php   echo $this->noticia->getCorpo();?></p>
-                    <br><br>
+                <p>
+                    <?php   echo $this->noticia->getCorpo();?>
+                </p>
+                    <br>
+                <br>
             </div>
+        <small style="vertical-align: inherit;"><i class="far fa-clock"></i>&nbsp;
+            <?php echo $this->noticia->getData()->format('d/m/Y')?>
+        </small>
 
       <?php
 
