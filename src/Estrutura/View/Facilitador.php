@@ -72,6 +72,7 @@ class Facilitador
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
             <li class="nav-item active">
+              <a style="text-align: center;" class="btn btn-md btn-primary" href="/">Pagina Inicial<span class="sr-only">(current)</span></a>    
               <a style="text-align: center" class="btn btn-md btn-danger" href="/logout">Sair<span class="sr-only">(current)</span></a>
             </li>
           </ul>
@@ -127,7 +128,7 @@ class Facilitador
                                 <span class="sr-only">(current)</span>
                             </a>
                         </li>
-                        <li class="nav-item dropdown">
+                        <li class="nav-item dropdown active">
                             <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false"> <i class="far fa-newspaper"></i> Noticias</a>
                             <div class="dropdown-menu">
                                 <?php foreach ($temas as $tema){ ?>
@@ -136,13 +137,13 @@ class Facilitador
                                 <a class="dropdown-item" href="/allNotices">Todas Notícias</a>
                             </div>
                         </li>
-                        <li class="nav-item">
+                        <li class="nav-item active">
                             <a class="nav-link" href="/about">
-                                <i class="fas fa-receipt"></i>&nbsp;Sobre Nós
+                                <i class="fas fa-users"></i>&nbsp;Grêmio Atual
                                 <span class="sr-only">(current)</span>
                             </a>
                         </li>
-                        <li class="nav-item">
+                        <li class="nav-item active">
                             <a class="nav-link" href="/movimentacoes">
                                 <i class="fas fa-money-check-alt"></i>&nbsp;Movimentações
                                 <span class="sr-only">(current)</span>

@@ -19,6 +19,12 @@ class GremioForm extends BaseFormView
         }
         return '
         <script src="utils/js/editor.js"></script>
+        <div class="alert alert-info">
+            <strong>Atenção!</strong>
+            <br>
+            <span>Certifique-se de manter apenas uma das entidade do grêmio como ativa.</span>
+        </div>
+        <script src="utils/js/editor.js"></script>
         <form action="' . $this->getRouter() . '" method="POST">
             <div class="form-group">
                 <label for="exampleFormControlInput1">#</label>
@@ -28,6 +34,10 @@ class GremioForm extends BaseFormView
                 <label for="exampleFormControlInput1">Chapa</label>
                 <input type="text" class="form-control" name="chapa" required>
             </div>
+             <div class="form-group">
+                <label>Sobre Nós</label>
+                <textarea class="form-control" name="descricao" rows="5"></textarea>
+            </div>
             <div class="form-group">
                 <label for="exampleFormControlInput1">Gremio Atual?</label>
                 <select class="form-control" name="atual" required>
@@ -36,7 +46,12 @@ class GremioForm extends BaseFormView
                 </select>
             </div>            
             ' . $botao . '
-        </form>';
+        </form>
+        <script>
+            $(document).ready(function () {
+                nicEditors.allTextAreas()
+            });
+        </script>';
     }
 }
 ?>

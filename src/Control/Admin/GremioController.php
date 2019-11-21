@@ -74,6 +74,7 @@ class GremioController extends BaseController
                 $gremio = new Gremio();
                 $gremio->setNomeChapa($this->getDataParam('chapa'));
                 $gremio->setMandatoAtual($this->getDataParam('atual'));
+                $gremio->setDescricao($this->getDataParam('descricao'));
                 $this->getEntityManager()->persist($gremio);
                 $this->getEntityManager()->flush();
                 $this->redirectPage("/admin");
@@ -92,6 +93,7 @@ class GremioController extends BaseController
                 $gremio = $this->getEntityManager()->getRepository(Gremio::class)->find($this->getResquestParam('id'));
                 $gremio->setNomeChapa($this->getDataParam('chapa'));
                 $gremio->setMandatoAtual($this->getDataParam('atual'));
+                $gremio->setDescricao($this->getDataParam('descricao'));
                 $this->getEntityManager()->persist($gremio);
                 $this->getEntityManager()->flush();
                 $this->redirectPage("/admin");
@@ -118,6 +120,7 @@ class GremioController extends BaseController
             'id' => $gremio->getId(),
             'chapa' =>  $gremio->getNomeChapa(),
             'atual' =>  $gremio->getMandatoAtual(),
+            'descricao' =>  $gremio->getDescricao(),
         ];
         return $dado;
     }

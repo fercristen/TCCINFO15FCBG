@@ -47,10 +47,10 @@ class LoginFormView extends BaseView
                                 <br/>
                                 <div class="col-sm-12">
                                     <div class="col-sm-6 float-left">
-                                        <button class="btn btn-lg btn-primary btn-block" name="login" type="submit">Entrar&nbsp;<i class="fas fa-sign-in-alt"></i></button>
+                                        <a class="btn btn-lg btn-danger btn-block" href="/">Cancelar&nbsp;<i class="far fa-window-close"></i></a>
                                     </div>
                                     <div class="col-sm-6 float-right">
-                                        <a class="btn btn-lg btn-danger btn-block" href="/">Cancelar&nbsp;<i class="far fa-window-close"></i></a>
+                                        <button class="btn btn-lg btn-primary btn-block" name="login" type="submit">Entrar&nbsp;<i class="fas fa-sign-in-alt"></i></button>
                                     </div>
                                 </div>
                                 <br>

@@ -3,7 +3,7 @@
 namespace Model;
 /**
  * @Entity
- * @Table(name="gremio")
+ * @Table(name="gremio", indexes={@Index(name="ativo_index", columns={"gre_mandato_atual"}, options={"where": "(gre_mandato_atual = true)"})})
  */
 class Gremio
 {
@@ -29,6 +29,11 @@ class Gremio
      * @Column(name="gre_mandato_atual", type="boolean")
      */
     protected $mandatoAtual;
+
+    /**
+     * @Column(name="gre_corpo", type="text", nullable=true)
+     */
+    protected $descricao;
 
     public function __construct()
     {
@@ -97,6 +102,22 @@ class Gremio
     public function setMandatoAtual($mandatoAtual)
     {
         $this->mandatoAtual = $mandatoAtual;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getDescricao()
+    {
+        return $this->descricao;
+    }
+
+    /**
+     * @param mixed $descricao
+     */
+    public function setDescricao($descricao)
+    {
+        $this->descricao = $descricao;
     }
 
 

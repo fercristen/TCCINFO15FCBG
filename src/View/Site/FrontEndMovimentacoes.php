@@ -26,8 +26,8 @@ class FrontEndMovimentacoes extends BaseView
         ?>
         <main style="margin-top: 75px" role="main" class="container">
             <div class="col-sm-12">
-                <div style="float: left" class="col-sm-6">
-                    <h4>Entradas</h4>
+                <div style="float: left" class="col-sm-3 col-md-6">
+                    <h4>Entradas&nbsp;<i class="fas fa-sign-in-alt"></i></h4>
                     <?php foreach ($entradas as $entrada){
                         echo
                         '<fieldset style="border-bottom: solid 1px gray">
@@ -36,8 +36,8 @@ class FrontEndMovimentacoes extends BaseView
                          </fieldset>';
                     }?>
                 </div>
-                <div style="float: right" class="col-sm-6">
-                    <h4>Saídas</h4>
+                <div style="float: right" class="col-sm-3 col-md-6">
+                    <h4>Saídas&nbsp;<i class="fas fa-sign-out-alt"></i></h4>
                     <?php foreach ($saidas as $saida){
                         echo
                             '<fieldset style="border-bottom: solid 1px gray">
