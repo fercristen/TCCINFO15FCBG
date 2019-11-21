@@ -5,6 +5,7 @@ namespace Control\Admin;
 
 
 use Estrutura\Controller\BaseController;
+use Estrutura\Model\Mensagem;
 use Model\Usuario;
 use Repository\UsuarioRepository;
 use View\Admin\LoginFormView;
@@ -19,8 +20,10 @@ class BackEndController extends BaseController
             $usuario = $repositorio->validaLogin($this->getDataParam("email"), $this->getDataParam("password"));
             if($usuario){
                 $this->setUserSession($usuario);
+                new Mensagem(Mensagem::TIPO_SUCESSO, 'Login realizado com sucesso.');
                 $this->redirectPage("/admin");
             }else{
+                new Mensagem(Mensagem::TIPO_ERRO, 'Não localizado usuário com informações solicitadas.');
                 $this->redirectPage("/login");
             }
         }else{

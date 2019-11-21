@@ -9,6 +9,7 @@ namespace Control\Admin;
 
 
 use Estrutura\Controller\BaseController;
+use Estrutura\Model\Mensagem;
 use Estrutura\Model\Resposta;
 use Model\Noticia;
 use Model\NoticiaImagem;
@@ -88,8 +89,10 @@ class NoticiasController extends BaseController
                 $noticiaImagemCapa->setTituloImagem("Capa da noticia");
                 $this->getEntityManager()->persist($noticiaImagemCapa);
                 $this->getEntityManager()->flush();
+                new Mensagem(Mensagem::TIPO_SUCESSO, 'Sucesso ao adicionar noticia');
                 $this->redirectPage("/admin");
             }catch (\Exception $exception){
+                new Mensagem(Mensagem::TIPO_ERRO, 'Erro ao adicionar noticia');
                 $this->redirectPage("/admin");
             }
         }else{
@@ -109,8 +112,10 @@ class NoticiasController extends BaseController
                 $noticia->setTema($tema);
                 $this->getEntityManager()->persist($noticia);
                 $this->getEntityManager()->flush();
+                new Mensagem(Mensagem::TIPO_SUCESSO, 'Sucesso ao alterar noticia');
                 $this->redirectPage("/admin");
             }catch (\Exception $exception){
+                new Mensagem(Mensagem::TIPO_ERRO, 'Erro ao alterar noticia');
                 $this->redirectPage("/admin");
             }
         }else{

@@ -10,6 +10,7 @@ namespace Estrutura\Controller;
 
 use Estrutura\Configuration\DataBase;
 use Estrutura\DataBase\Connection;
+use Estrutura\Model\Mensagem;
 
 class BaseController
 {
@@ -84,10 +85,26 @@ class BaseController
         $_SESSION[$name] = $value;
     }
 
+    public static function unsetOnSession($name){
+        unset($_SESSION[$name]);
+    }
+
     public function getOnSession($name){
         if (isset($_SESSION[$name])){
             return $_SESSION[$name];
         }
         return null;
+    }
+
+    public static function getMessageErro(){
+        return self::getOnSession(Mensagem::TIPO_ERRO);
+    }
+
+    public static function getMessageSuccess(){
+        return self::getOnSession(Mensagem::TIPO_SUCESSO);
+    }
+
+    public static function setMessage($tipo, $mensagem){
+        self::setOnSession($tipo, $mensagem);
     }
 }

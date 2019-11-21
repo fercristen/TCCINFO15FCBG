@@ -177,6 +177,26 @@ class RouterDefine
                 'control' => 'Control::Admin::BannerController.view',
                 'privilegio' => self::ADMIN_USER,
             ],
+            '/usuarios' => [
+                'control' => 'Control::Admin::UsuarioController.index',
+                'privilegio' => self::ADMIN_USER,
+            ],
+            '/addUsuario' => [
+                'control' => 'Control::Admin::UsuarioController.add',
+                'privilegio' => self::ADMIN_USER,
+            ],
+            '/editUsuario' => [
+                'control' => 'Control::Admin::UsuarioController.edit',
+                'privilegio' => self::ADMIN_USER,
+            ],
+            '/deleteUsuario' => [
+                'control' => 'Control::Admin::UsuarioController.delete',
+                'privilegio' => self::ADMIN_USER,
+            ],
+            '/viewUsuario' => [
+                'control' => 'Control::Admin::UsuarioController.view',
+                'privilegio' => self::ADMIN_USER,
+            ],
         );
     }
 }

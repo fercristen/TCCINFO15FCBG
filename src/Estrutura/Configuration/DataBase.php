@@ -4,7 +4,7 @@ namespace Estrutura\Configuration;
 
 class DataBase
 {
-    const URL_SITE = "http://devgremioifc.com";
+    const URL_SITE = "http://gremiodev.com";
 
     public static function getConnectionConfiguration(){
         $conn = array(
